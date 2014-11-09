@@ -1,0 +1,38 @@
+#!/bin/bash
+# Adapted from script by Philip Newborough (aka corenominal) <mail@philipnewborough.co.uk>
+
+if [ "$1" = "--toggle" ]; then
+  if [ ! "$(pidof compton)" ]; then
+    compton
+  else
+    killall compton
+  fi
+  exit 0
+fi
+
+if [ ! "$(pidof compton)" ]; then
+  cat << EOXML
+  <openbox_pipe_menu>
+    <item label="Enable Compositing">
+      <action name="Execute">
+        <execute>
+          compton_openbox --toggle
+        </execute>
+      </action>
+    </item>
+  </openbox_pipe_menu>
+EOXML
+else
+  cat << EOXML
+  <openbox_pipe_menu>
+    <item label="Disable Compositing">
+      <action name="Execute">
+        <execute>
+          compton_openbox --toggle
+        </execute>
+      </action>
+    </item>
+  </openbox_pipe_menu>
+EOXML
+fi
+exit 0
