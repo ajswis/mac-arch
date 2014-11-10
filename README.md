@@ -232,7 +232,10 @@ yaourt -S postgres mongodb redis
 sudo pacman -S laptop-mode-tools cpupower pm-utils upower profile-sync-daemon anything-sync-daemon
 sudo systemctl enable laptop-mode cpupower psd psd-resync asd asd-resync
 ```
-
+laptop-mode
 - Edit `/etc/laptop-mode/laptop-mode.conf` with value `LM_BATT_MAX_LOST_WORK_SECONDS=15`
 - Edit `/etc/laptop-mode/conf.d/usb-autosuspend.conf` with value `AUTOSUSPEND_TIMEOUT=1`
 - Edit `/etc/laptop-mode/conf.d/intel-hda-powersave.conf` with value `INTEL_HDA_DEVICE_TIMEOUT=1`
+
+cpupower
+- Edit `/etc/defaults/cpupower` with value `governer='powersave'`
