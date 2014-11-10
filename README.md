@@ -90,7 +90,7 @@ vi /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # rEFInd
-echo '"Arch Linux" "root=/dev/sdaX resume=/dev/sdaY rw splash loglevel=3 rootflags=data=writeback libata.force=noncq initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
+echo '"Arch Linux" "root=/dev/sdaX resume=/dev/sdaY rw splash loglevel=3 i915.i915_enable_rc6=1 rootflags=data=writeback libata.force=noncq initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
 
 useradd -m -g users -G wheel -s /bin/bash username
 ```
