@@ -206,7 +206,13 @@ sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 
 ##### Apps
 ```sh
-sudo pacman -S scrot feh chromium flashplugin gimp inkscape conky-lua
+yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
+
+# For skype
+yaourt -S skype skype-secure pulseaudio
+mkdir ~/.pulse && cp /etc/pulse/default.pa ~/.pulse/ && echo "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1" >> ~/.pulse/default.pa
+# /home/_skype/.pulse/client.conf should already have 'default-server = 127.0.0.1'
+
 ```
 
 ##### Media
