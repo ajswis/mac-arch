@@ -223,7 +223,7 @@ yaourt -S mplayer google-talkplugin
 
 ##### Development
 ```sh
-yaourt -S postgres mongodb redis
+yaourt -S postgres mongodb redis heroku-client
 \curl -sSL https://get.rvm.io | bash -s stable
 ```
 
