@@ -181,7 +181,7 @@ usermod -a -G audio,video,network,power,disk,storage,optical,lp,systemd-journal 
 
 ##### Xorg
 ```sh
-sudo pacman -S xorg-server xfce4-notifyd
+sudo pacman -S xorg-server xorg-xrdb xfce4-notifyd
 sudo cp /this/repo/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/
 ```
 
