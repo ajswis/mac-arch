@@ -209,9 +209,10 @@ sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
 
 # For skype
-yaourt -S skype skype-secure pulseaudio
-mkdir ~/.pulse && cp /etc/pulse/default.pa ~/.pulse/ && echo "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1" >> ~/.pulse/default.pa
-# /home/_skype/.pulse/client.conf should already have 'default-server = 127.0.0.1'
+yaourt -S skype-restricted xorg-xhost
+# May want to edit PKGBUILD and remove gksu for something else.
+# Note, if you do this, need to also edit /usr/bin/skype wrapper script
+echo "user ALL=(_skype) /var/skype/skype" >> /etc/sudoers
 
 ```
 
