@@ -90,7 +90,10 @@ vi /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # rEFInd
-echo '"Arch Linux" "root=/dev/sda5 resume=/dev/sda6 rw splash loglevel=3 rootflags=data=writeback libata.force=noncq acpi_osi=Linux acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_modeset=1 i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
+echo '"Arch Linux" "root=/dev/sda5 resume=/dev/sda6 rw splash loglevel=3 rootflags=data=writeback libata.force=noncq acpi_osi=Linux acpi_osi='!Windows 2012' acpi=force acpi_enforce_resources=lax i915.i915_modeset=1 i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 initrd=boot/intel-ucode.img initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
+# NOTE: For intel microcode updates, you'll need to install the intel-ucode package
+# The initrd option must also be placed early in the boot process
+# NB: I'm not sure about all the ACPI options, but we'll see how they turn out
 
 useradd -m -g users -G wheel -s /bin/bash username
 ```
