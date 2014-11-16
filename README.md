@@ -212,6 +212,11 @@ yaourt -S openbox tint2-svn compton-git
 sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 ```
 
+##### Awesome WM
+```sh
+yaourt -S awesome obvious-git
+```
+
 ##### Apps
 ```sh
 yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
