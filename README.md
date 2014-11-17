@@ -6,7 +6,7 @@ Much of this has been adapted from https://gist.github.com/terlar/6143325. Other
 #### Pre-install on Mac
 This needs revisiting. I already had a partition available from a previous install after the Yosemite update. If all else fails ``diskutil corestorage revert UUID`` will remove Apple's logical volume update and allow diskutil to resize a partition normally.
 
-````
+```
 diskutil corestorage list # Need the bottom-most logical volume UUID
 diskutil corestorage resizeStack <UUID> <size>
 
@@ -22,7 +22,7 @@ diskutil partionDisk 2 /dev/diskXsY JHFS+ 'rEFInd' 100M HSF+ 'doesntmatter' R
 
 ##### rEFInd
 First, download rEFInd
-````
+```
 <rEFInd>/install /Volumes/rEFInd --ownhfs /dev/diskXsY # 'rEFInd' parition
 ```
 - Edit /Volumes/rEFInd/System/Library/CoreServices/refind.conf
@@ -36,7 +36,7 @@ Download a pre-built Broadcom wireless driver here: https://drive.google.com/fil
 
 **If using the pre-built package:**
 
-````
+```
 mkdir /mnt/usb
 mount /dev/sdaY /mnt/usb
 cp /mnt/usb/PATH/TO/broadcom-wl-6.30.223.248-2-x86_64.pkg.tar.xz ~
@@ -50,14 +50,14 @@ wifi-menu -o wlp3s0
 
 **If tethering from a phone:**
 
-````
+```
 ip link # get device name for USB tether
 dhclient # dhcp didn't work for my phone
 ```
 
 ##### Bootstrapping
 
-````
+```
 gdisk /dev/sda
 
 mkfs.ext4 /dev/sdaY
@@ -214,7 +214,7 @@ sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 
 ##### Awesome WM
 ```sh
-yaourt -S awesome obvious-git
+yaourt -S awesome obvious-git compton-git
 ```
 
 ##### Apps
@@ -226,7 +226,6 @@ yaourt -S skype-restricted xorg-xhost
 # May want to edit PKGBUILD and remove gksu for something else.
 # Note, if you do this, need to also edit /usr/bin/skype wrapper script
 echo "user ALL=(_skype) /var/skype/skype" >> /etc/sudoers
-
 ```
 
 ##### Media
