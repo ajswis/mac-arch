@@ -136,7 +136,7 @@ sudo pacman -U yaourt*.pkg.tar.xz
 yaourt -S powerpill
 
 ```
-- Edit `/etc/makepkg.conf` add `MAKEFLAGS="-j4"`
+- Edit `/etc/makepkg.conf` and add `MAKEFLAGS="-j4"`
 
 
 ##### Drivers
@@ -191,7 +191,7 @@ usermod -a -G audio,video,network,power,disk,storage,optical,lp,systemd-journal 
 
 ##### Xorg
 ```sh
-sudo pacman -S xorg-server xorg-xrdb libnotify
+sudo pacman -S xorg-server xorg-xrdb libnotify xbindkeys xorg-xmodmap
 sudo cp /this/repo/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/
 ```
 To get notifications working from cron jobs, you might need to add to the top of your crontab or give pass it your ```DBUS_SESSIONS_BUS_ADDRESS```.
@@ -224,9 +224,14 @@ sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 yaourt -S awesome obvious-git compton-git
 ```
 
+##### Terminal Emulator
+```sh
+yaourt -S rxvt-unicode urxvt-tabbedex-git urxvt-perls-git
+```
+
 ##### Apps
 ```sh
-yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini rxvt-unicode
+yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
 
 # For skype
 yaourt -S skype-restricted xorg-xhost
