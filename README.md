@@ -134,7 +134,10 @@ makepkg -s
 sudo pacman -U yaourt*.pkg.tar.xz
 
 yaourt -S powerpill
+
 ```
+- Edit `/etc/makepkg.conf` add `MAKEFLAGS="-j4"`
+
 
 ##### Drivers
 ```sh
