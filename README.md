@@ -188,7 +188,7 @@ usermod -a -G audio,video,network,power,disk,storage,optical,lp,systemd-journal 
 
 ##### Xorg
 ```sh
-sudo pacman -S xorg-server xorg-xrdb xfce4-notifyd
+sudo pacman -S xorg-server xorg-xrdb libnotify
 sudo cp /this/repo/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/
 ```
 To get notifications working from cron jobs, you might need to add to the top of your crontab or give pass it your ```DBUS_SESSIONS_BUS_ADDRESS```.
