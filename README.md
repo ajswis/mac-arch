@@ -223,7 +223,7 @@ yaourt -S awesome obvious-git compton-git
 
 ##### Apps
 ```sh
-yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
+yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini rxvt-unicode
 
 # For skype
 yaourt -S skype-restricted xorg-xhost
