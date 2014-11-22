@@ -89,12 +89,16 @@ vi /etc/mkinitcpio.conf
 mkinitcpio -p linux
 
 # rEFInd
-echo '"Arch Linux" "root=/dev/sda5 resume=/dev/sda6 rw splash loglevel=3 rootflags=data=writeback libata.force=noncq acpi_osi=Linux acpi_osi=\\'!Windows 2012\\' acpi=force acpi_enforce_resources=lax i915.modeset=1 i915.enable_rc6=1 i915.enable_fbc=1 i915.lvds_downclock=1 initrd=boot/intel-ucode.img initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
+echo '"Arch Linux" "root=/dev/sdXY resume=/dev/sdXZ rw splash loglevel=3 rootflags=data=writeback libata.force=noncq acpi_osi=Linux acpi=force acpi_enforce_resources=lax i915.modeset=1 i915.enable_rc6=1 i915.enable_fbc=1 i915.lvds_downclock=1 initrd=boot/initramfs-linux.img"' > /boot/refind_linux.conf
 # NOTE: For intel microcode updates, you'll need to install the intel-ucode package
 # The initrd option must also be placed early in the boot process
 # NB: I'm not sure about all the ACPI options, but we'll see how they turn out
 
 useradd -m -g users -G wheel -s /bin/bash username
+
+# Setup passwords
+passwd
+passwd username
 ```
 If you're using the pre-built wireless driver, you can reboot. If not, you may want to see the Yaourt section, and ```yaourt -S broadcom-wl-dkms``` before exiting the live USB.
 
@@ -234,7 +238,7 @@ yaourt -S mplayer google-talkplugin
 
 ##### Development
 ```sh
-yaourt -S postgres mongodb redis heroku-client
+yaourt -S postgresql mongodb redis heroku-client
 \curl -sSL https://get.rvm.io | bash -s stable
 ```
 
