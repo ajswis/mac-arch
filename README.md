@@ -114,7 +114,7 @@ sudo systemctl enable netctl-auto@wlp3s0.service
 ##### Basic Tools
 
 ```sh
-sudo pacman -S alsa-utils powertop dnsutils net-tools acpi openssh unzip unrar cronie git
+sudo pacman -S alsa-utils powertop dnsutils net-tools acpi openssh unzip unrar cronie git ack
 sudo systemctl enable sshd cronie
 ```
 
