@@ -163,6 +163,7 @@ To get sound working, add this to `/etc/asound.conf`:
 defaults.pcm.card 1
 defaults.pcm.device 0
 defaults.ctl.card 1
+defaults.ctl.device 0
 ```
 
 ##### Tools
