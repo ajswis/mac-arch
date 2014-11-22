@@ -10,9 +10,8 @@ This needs revisiting. I already had a partition available from a previous insta
 diskutil corestorage list # Need the bottom-most logical volume UUID
 diskutil corestorage resizeStack <UUID> <size>
 
-# If that doesn't work, some tinkering may be required along the lines of:
-diskutil corestorage resizeVolume UUID <size>
-diskutil corestorage resizeDisk UUID <size>
+# If that doesn't work, some tinkering may be required similar to this:
+diskutil corestorage resizeStack UUID <size>
 
 # Once you've got a free partition, you need to
 # format an JHFS+ partition for booting via rEFInd
