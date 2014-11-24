@@ -238,7 +238,7 @@ yaourt -S ds-digital-fonts lm_sensors # for conky
 yaourt -S skype-restricted xorg-xhost
 # May want to edit PKGBUILD and remove gksu for something else.
 # Note, if you do this, need to also edit /usr/bin/skype wrapper script
-echo "user ALL=(_skype) /var/skype/skype" >> /etc/sudoers
+echo "user ALL=(_skype) NOPASSWD: /var/skype/skype" >> /etc/sudoers
 ```
 
 ##### Media
