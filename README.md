@@ -232,6 +232,7 @@ yaourt -S rxvt-unicode urxvt-tabbedex-git urxvt-perls-git
 ##### Apps
 ```sh
 yaourt -S scrot feh chromium flashplugin gimp inkscape conky-lua pidgin-mini
+yaourt -S ds-digital-fonts lm_sensors # for conky
 
 # For skype
 yaourt -S skype-restricted xorg-xhost
