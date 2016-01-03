@@ -31,21 +31,6 @@ First, download rEFInd
 - Theme rEFInd (currently https://github.com/EvanPurkhiser/rEFInd-minimal)
 
 #### Installing Arch
-Download a pre-built Broadcom wireless driver here: https://drive.google.com/file/d/0B_MBK5kv4gmxOTdvMXNwMU9EOGc/view?usp=sharing or USB tether from a phone to install Arch.
-
-**If using the pre-built package:**
-
-```
-mkdir /mnt/usb
-mount /dev/sdaY /mnt/usb
-cp /mnt/usb/PATH/TO/broadcom-wl-6.30.223.248-2-x86_64.pkg.tar.xz ~
-pacman -U ~/broadcom-wl-6.30.223.248-2-x86_64.pkg.tar.xz
-modprobe -r wl
-modprobe wl
-umount /mnt/usb
-rmdir /mnt/usb
-wifi-menu -o wlp3s0
-```
 
 **If tethering from a phone:**
 
@@ -100,12 +85,12 @@ useradd -m -g users -G wheel -s /bin/bash username
 passwd
 passwd username
 ```
-If you're using the pre-built wireless driver, you can reboot. If not, you may want to see the Yaourt section, and ```yaourt -S broadcom-wl-dkms``` before exiting the live USB.
+Before rebooting, install dhclient and the wireless driver. dhclient is for tethering in case someone goes wrong with wireless setup.
 
 ##### Wi-Fi Setup
 
 ```sh
-pacman -U /root/broadcom-wl-6.30.223.141-8-x86_64.pkg.tar.xz
+yaourt -S broadcom-wl-dkms
 
 sudo wifi-menu -o wlp3s0
 sudo systemctl enable netctl-auto@wlp3s0.service
