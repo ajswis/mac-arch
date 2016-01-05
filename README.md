@@ -158,7 +158,7 @@ defaults.ctl.device 0
 ```sh
 yaourt -S kbdlight xorg-xbacklight
 yaourt -S zsh zsh-completions zsh-syntax-highlighting
-yaourt -S gvim-pythonsix
+yaourt -S vim-nox
 gem install gist
 ```
 
@@ -176,7 +176,7 @@ usermod -a -G audio,video,network,power,disk,storage,optical,lp,systemd-journal 
 
 ##### Xorg
 ```sh
-sudo pacman -S xorg-server xorg-xrdb libnotify xbindkeys xorg-xmodmap
+sudo pacman -S xorg-server xorg-xrdb libnotify xbindkeys xorg-xmodmap xclip xvkbd
 sudo cp /this/repo/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/
 ```
 To get notifications working from cron jobs, you might need to add to the top of your crontab or give pass it your ```DBUS_SESSIONS_BUS_ADDRESS```.
