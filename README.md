@@ -133,10 +133,14 @@ sudo systemctl enable acpid macfanctld
 yaourt -S pacman -S bluez bluez-libs bluez-utils
 ```
 
+Fix HDMI card being listed first
+```sh
+echo "options snd-hda-intel index=1" >> /etc/modprobe.d/alsa-base.conf
+```
+
 **Disable that annoying red headphone jack light**
 ```sh
 amixer -c 0 sset IEC958 off
-echo "options snd-hda-intel model=mbp111" >> /etc/modprobe.d/alsa-base.conf
 ```
 If that didn't work (it probably won't)
 ```sh
@@ -148,9 +152,9 @@ Make sure to have a cron demon running.
 
 To get sound working, add this to `/etc/asound.conf`:
 ```
-defaults.pcm.card 1
+defaults.pcm.card 0
 defaults.pcm.device 0
-defaults.ctl.card 1
+defaults.ctl.card 0
 defaults.ctl.device 0
 ```
 
@@ -187,8 +191,9 @@ XAUTHORITY=/home/user/.Xauthority
 
 ##### Fonts
 ```sh
-yaourt -S ttf-dejavu ttf-symbola ttf-droid adobe-source-code-pro-fonts ttf-linux-libertine ttf-ubuntu-font-family ttf-freefont wqy-zenhei ttf-mac-fonts ttf-envy-code-r ttf-opensans
-yaourt -S otf-ipafont ttf-tw ttf-baekmuk ttf-mathtype
+yaourt -S fontconfig-infinality-ultimate
+#yaourt -S ttf-dejavu ttf-symbola ttf-droid adobe-source-code-pro-fonts ttf-linux-libertine ttf-ubuntu-font-family ttf-freefont wqy-zenhei ttf-mac-fonts ttf-envy-code-r ttf-opensans
+#yaourt -S otf-ipafont ttf-tw ttf-baekmuk ttf-mathtype
 ```
 
 ##### Login Manager
