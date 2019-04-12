@@ -221,17 +221,8 @@ yaourt -S rxvt-unicode urxvt-tabbedex-git urxvt-perls-git
 
 ##### Apps
 ```sh
-yaourt -S scrot feh chromium chromium-pepper-flash gimp inkscape conky-lua pidgin-mini
+yaourt -S scrot feh firefox gimp inkscape conky-lua pidgin-mini
 yaourt -S ds-digital-fonts lm_sensors # for conky
-
-# For skype
-yaourt -S skype-restricted xorg-xhost lib32-apulse
-# May want to edit PKGBUILD and remove gksu for something else.
-# Note, if you do this, need to also edit /usr/bin/skype wrapper script
-echo "user ALL=(_skype) NOPASSWD: /var/skype/skype" >> /etc/sudoers
-sudoedit /var/skype/skype
-# Modify exec line to: exec /usr/bin/apulse32 "$LIBDIR/skype/skype" "$@"
-
 ```
 
 ##### Media
