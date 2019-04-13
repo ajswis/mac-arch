@@ -36,7 +36,7 @@ First, download rEFInd
 
 ```
 ip link # get device name for USB tether
-dhclient # dhcp didn't work for my phone
+dhclient
 ```
 
 ##### Bootstrapping
@@ -85,12 +85,12 @@ useradd -m -g users -G wheel -s /bin/bash username
 passwd
 passwd username
 ```
-Before rebooting, install dhclient and the wireless driver. dhclient is for tethering in case someone goes wrong with wireless setup.
+Before rebooting, install dhclient and the wireless driver. dhclient is for tethering in case something goes wrong with wireless setup.
 
 ##### Wi-Fi Setup
 
 ```sh
-yaourt -S broadcom-wl-dkms
+yay -S broadcom-wl-dkms
 
 sudo wifi-menu -o wlp3s0
 sudo systemctl enable netctl-auto@wlp3s0.service
@@ -103,39 +103,11 @@ sudo pacman -S alsa-utils powertop dnsutils net-tools acpi openssh unzip unrar c
 sudo systemctl enable sshd cronie
 ```
 
-##### Yaourt (AUR)
-
-```sh
-sudo pacman -Syy
-
-curl -O https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz
-tar -xzf package-query.tar.gz && cd package-query
-makepkg -s
-sudo pacman -U package-query-*.pkg.tar.xz
-
-curl -O https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
-tar -xzf yaourt.tar.gz && cd yaourt
-makepkg -s
-sudo pacman -U yaourt*.pkg.tar.xz
-
-yaourt -S powerpill
-
-```
-- Edit `/etc/makepkg.conf` and add `MAKEFLAGS="-j4"`
-
-
 ##### Drivers
 ```sh
-yaourt -S acpid xf86-video-intel broadcom-wl-dkms xf86-input-mtrack-git macfanctld-git
+yay -S acpid xf86-video-intel broadcom-wl-dkms xf86-input-mtrack-git macfanctld-git
 sudo cp /this/repo/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d/
 sudo systemctl enable acpid macfanctld
-
-yaourt -S pacman -S bluez bluez-libs bluez-utils
-```
-
-Fix HDMI card being listed first
-```sh
-echo "options snd-hda-intel index=1" >> /etc/modprobe.d/alsa-base.conf
 ```
 
 **Disable that annoying red headphone jack light**
@@ -144,32 +116,26 @@ amixer -c 0 sset IEC958 off
 ```
 If that didn't work (it probably won't)
 ```sh
-yaourt -S hda-verb
+yay -S hda-verb
 # As root
 crontab -l | { cat; echo "@reboot /usr/bin/hda-verb /dev/snd/hwC1D0 0x0e SET_POWER_STATE 0x03"; } | crontab -
 ```
-Make sure to have a cron demon running.
+Make sure to have a cron daemon running.
 
 To get sound working, add this to `/etc/asound.conf`:
 ```
-defaults.pcm.card 0
+defaults.pcm.card 1
 defaults.pcm.device 0
-defaults.ctl.card 0
+defaults.ctl.card 1
 defaults.ctl.device 0
 ```
 
 ##### Tools
 ```sh
-yaourt -S kbdlight xorg-xbacklight
-yaourt -S zsh zsh-completions zsh-syntax-highlighting
-yaourt -S vim-nox
-gem install gist
+yay -S kbdlight xorg-xbacklight
+yay -S zsh zsh-completions zsh-syntax-highlighting
 ```
 
-##### Printer
-```sh
-sudo pacman -S cups
-```
 ##### User
 ```
 chsh -s /usr/bin/zsh
@@ -183,56 +149,49 @@ usermod -a -G audio,video,network,power,disk,storage,optical,lp,systemd-journal 
 sudo pacman -S xorg-server xorg-xrdb libnotify xbindkeys xorg-xmodmap xclip xvkbd
 sudo cp /this/repo/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/
 ```
-To get notifications working from cron jobs, you might need to add to the top of your crontab or give pass it your ```DBUS_SESSIONS_BUS_ADDRESS```.
+To get notifications working from cron jobs, you might need to add to the top of your crontab or pass it your ```DBUS_SESSIONS_BUS_ADDRESS```.
 ```
 DISPLAY=:0.0
 XAUTHORITY=/home/user/.Xauthority
 ```
 
-##### Fonts
-```sh
-yaourt -S fontconfig-infinality-ultimate
-#yaourt -S ttf-dejavu ttf-symbola ttf-droid adobe-source-code-pro-fonts ttf-linux-libertine ttf-ubuntu-font-family ttf-freefont wqy-zenhei ttf-mac-fonts ttf-envy-code-r ttf-opensans
-#yaourt -S otf-ipafont ttf-tw ttf-baekmuk ttf-mathtype
-```
-
 ##### Login Manager
 ```sh
-yaourt -S slim slim-theme-arch-triforce
+yay -S slim slim-theme-arch-triforce
 sudo systemctl enable slim.service
 ```
 - Edit /etc/slim.conf, change theme to slim-theme-arch-triforce
 
 ##### Openbox
 ```sh
-yaourt -S openbox tint2-svn compton-git
+yay -S openbox tint2-svn compton-git
 sudo cp /this/repo/compton/compton_openbox /usr/local/bin/
 ```
 
 ##### Awesome WM
 ```sh
-yaourt -S awesome obvious-git compton-git
+yay -S awesome obvious-git compton-git
 ```
 
 ##### Terminal Emulator
 ```sh
-yaourt -S rxvt-unicode urxvt-tabbedex-git urxvt-perls-git
+yay -S rxvt-unicode urxvt-tabbedex-git urxvt-perls-git
 ```
 
 ##### Apps
 ```sh
-yaourt -S scrot feh firefox gimp inkscape conky-lua pidgin-mini
-yaourt -S ds-digital-fonts lm_sensors # for conky
+yay -S scrot feh firefox conky-lua
+yay -S ds-digital-fonts lm_sensors # for conky
 ```
 
 ##### Media
 ```sh
-yaourt -S mplayer google-talkplugin
+yay -S mplayer google-talkplugin
 ```
 
 ##### Development
 ```sh
-yaourt -S postgresql mongodb redis heroku-client
+yay -S postgresql mongodb redis heroku-client
 \curl -sSL https://get.rvm.io | bash -s stable
 ```
 
